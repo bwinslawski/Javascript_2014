@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+    <title>Walidacja formularza</title>
+    <link rel="stylesheet" href="Form.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script type="text/javascript" src="Form.js"></script>
+</head>
+<body>
+ <form action="#" id="info-form" onsubmit='return validation();'>
+	<table>
+		<tr> 
+			<td>Imię i nazwisko: <span class="red"> *</span></td>
+			<td> <input type="text" name="name" id="name"/></td>
+			<td id="nameError" class="red">&nbsp;</td>
+         </tr> 
+		 <tr> 
+			<td>E-mail: <span class="red"> *</span></td>
+			<td><input type="text" name="email" id="email"/></td>
+			<td id="emailError" class="red">&nbsp;</td>
+		 </tr> 
+		 <tr> 
+			<td>Hasło (8 - 20 znaków) <span class="red">*</span></td>
+			<td><input type="text" name="password" id="password"/></td>
+			<td id="passwordok" class="green">&nbsp;</td>
+			<td id="passwordError" class="red">&nbsp;</td>
+		 </tr> 
+		 <tr> 
+			<td>Kod pocztowy <span class="red">*</span></td>
+			<td><input type="text" name="kod" id="kod"/></td>
+			<td id="kodError" class="red">&nbsp;</td>
+		 </tr> 
+		 <tr> 
+			<td>Miasto </td>
+			<td><input type="text" onclick="myFunction()" name="city" id="city"/></td>
+			<td id="cityError" class="red">&nbsp;</td>
+		 </tr> 
+		 <tr> 
+		 <td>
+		<input type="submit" value="gotowe" />
+		 </td>
+		 <td>
+		 
+		 </td>
+		 </tr> 
+	</table>
+	</form>
+	<button onclick="myFunction()">Click me</button>
+	<div></div>
+	<script>
+				$('#rejestracja').myPlugin();
+			</script>
+</body>
+</html>
