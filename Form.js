@@ -4,13 +4,36 @@
                         'color': '#D8D8D8'
         };
         if (settings){$.extend(config, settings);}
-		
+		var dane = 0 ;
 		function myFunction()
 	{     
-			if($( "#kod" ).val()){
-						 $.getJSON( "kods.json", function( data ) {
-					  var items = [];
-					  var multipleValues = $( "#kod" ).val()
+	
+			if(dane){
+			var l = 0 ;
+			 var multipleValues = $( "#kod" ).val();
+			var items = [];
+			
+						$.each( dane, function( key, val ) {
+					 
+					 
+					  if (val["KOD POCZTOWY"]==multipleValues) {
+					  l=1;
+					 $( "#city" ).val(val["MIEJSCOW"]);
+					 $( "#kod" ).removeClass( "error" );
+						 }
+					  });
+					  if (l==0)
+					 {
+					 $( "#kod" ).addClass( "error" );
+					 }
+					   
+			  }
+			  else
+			  {
+			  $.getJSON( "kods.json", function( data ) {
+					 
+					  var multipleValues = $( "#kod" ).val();
+						var items = [];
 					 console.log("loo "+multipleValues);
 					  var l = 0;
 					  $.each( data, function( key, val ) {
@@ -25,8 +48,9 @@
 					 {
 					 $( "#kod" ).addClass( "error" );
 					 }
-					 
+					 dane = data;
 					  });
+			  
 			  }
 	}
 	
@@ -41,18 +65,18 @@
 
 				if(p.length < 8){
 					obj.result=false;
-					obj.error="Za kr√≥tkie has≈Ço!"
+					obj.error="Za krÛtkie has≥o!"
 					var inputElement = document.getElementById('password');
 					var errorElement = document.getElementById('passwordError');
-					var errorMsg="Za kr√≥tkie has≈Ço!";
+					var errorMsg="Za krÛtkie has≥o!";
 					showMessage(inputElement, errorMsg, errorElement);
 					return obj;
 				}else if (p.length > 20){
 					obj.result=false;
-					obj.error="Za d≈Çugie has≈Ço!"
+					obj.error="Za d≥ugie has≥o!"
 					var inputElement = document.getElementById('password');
 					var errorElement = document.getElementById('passwordError');
-					var errorMsg="Za d≈Çugie has≈Ço!";
+					var errorMsg="Za d≥ugie has≥o!";
 					showMessage(inputElement, errorMsg, errorElement);
 					return obj;
 				}
@@ -82,7 +106,7 @@
 				obj.result=false;
 				var inputElement = document.getElementById('password');
 				var errorElement = document.getElementById('passwordok');
-				var errorMsg="Wzorcowe has≈Ço";
+				var errorMsg="Wzorcowe has≥o";
 				console.log("WZOROWR");
 				showMessageP(inputElement, errorMsg, errorElement);
 				}
@@ -90,7 +114,7 @@
 				obj.result=false;
 				var inputElement = document.getElementById('password');
 				var errorElement = document.getElementById('passwordok');
-				var errorMsg="≈örednie has≈Ço";
+				var errorMsg="årednie has≥o";
 				console.log("WZOROWR1");
 				showMessageP(inputElement, errorMsg, errorElement);
 				}
@@ -98,7 +122,7 @@
 				obj.result=false;
 				var inputElement = document.getElementById('password');
 				var errorElement = document.getElementById('passwordok');
-				var errorMsg="S≈Çabe has≈Ço";
+				var errorMsg="S≥abe has≥o";
 				console.log("WZOROWR2");
 				showMessageP(inputElement, errorMsg, errorElement);
 				}
@@ -166,7 +190,7 @@
 						{
 							var inputElement = document.getElementById(elem);
 							var errorElement = document.getElementById(elem + "Error");
-							var errorMsg="nieprawid≈Çowa warto≈õƒá";
+							var errorMsg="nieprawid≥owa wartoúÊ";
 							showMessage(inputElement, errorMsg, errorElement);
 						   // form[elem].style.background = 'red';
 							return false;
@@ -184,7 +208,7 @@
 		
 		
         return this.each(function(){
-                $(this).on('keydown', function(){
+                $(this).on('keyup', function(){
 				$("#info-form").css("background-color",config.color);
 				
 				validation();
